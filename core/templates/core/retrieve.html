@@ -1,0 +1,11 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>Retrieve a Paste</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="code">Enter 4-digit Code</label>
+    <input type="text" name="code" id="code" maxlength="4" pattern="\d{4}" required placeholder="1234">
+    <button type="submit">Retrieve</button>
+</form>
+<p><a href="{% url 'home' %}">Back to Home</a></p>
+{% endblock %}

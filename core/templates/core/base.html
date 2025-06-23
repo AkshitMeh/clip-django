@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Clipboard</title>
+    <style>
+        body {
+            background: #181a1b;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 480px;
+            margin: 40px auto;
+            background: #23272a;
+            border-radius: 8px;
+            box-shadow: 0 2px 16px #000a;
+            padding: 2rem 2.5rem 2.5rem 2.5rem;
+        }
+        h1, h2, h3 {
+            color: #fff;
+            font-weight: 600;
+        }
+        input, textarea, select, button {
+            width: 100%;
+            margin-bottom: 1rem;
+            padding: 0.7rem;
+            border-radius: 4px;
+            border: none;
+            background: #2c2f33;
+            color: #e0e0e0;
+            font-size: 1rem;
+            box-sizing: border-box;
+            display: block;
+        }
+        input[type="file"] {
+            padding: 0.3rem;
+            background: #23272a;
+        }
+        button {
+            background: #7289da;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #5b6eae;
+        }
+        a {
+            color: #7289da;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .code-box {
+            background: #111;
+            color: #0f0;
+            font-size: 1.5rem;
+            padding: 0.7rem 1.2rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            text-align: center;
+            letter-spacing: 0.2em;
+        }
+        .expired {
+            color: #ff5555;
+            font-weight: bold;
+        }
+        label {
+            color: #b0b0b0;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

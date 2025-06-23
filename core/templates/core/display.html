@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>Paste Content</h2>
+{% if paste.content_type == 'text' %}
+    <div class="form-group">
+        <label>Text:</label>
+        <textarea id="paste-textarea" readonly rows="8">{{ paste.text_content }}</textarea>
+        <button id="copy-btn" type="button" style="display:block; width:100%; margin-top:0.5rem; font-size:2rem; color:#7CFC00; background:#111; border-radius:12px; padding:0.5rem 0; margin-bottom:1rem; text-decoration:none; font-family:monospace; letter-spacing:0.2em; border:none; cursor:pointer;">Copy All Text</button>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var copyBtn = document.getElementById('copy-btn');
+        var textarea = document.getElementById('paste-textarea');
+        if (copyBtn && textarea) {
+            copyBtn.addEventListener('click', function() {
+                textarea.select();
+                document.execCommand('copy');
+                copyBtn.textContent = 'Copied!';
+                setTimeout(function() { copyBtn.textContent = 'Copy All Text'; }, 1200);
+            });
+        }
+    });
+    </script>
+{% elif paste.content_type == 'file' and paste.file_content %}
+    <div class="form-group">
+        <label>File:</label>
+        <div class="code-box" style="margin-bottom:0.5rem; font-size:1rem; color:#b0b0b0; background:#23272a;">{{ paste.file_content.name|cut:'uploads/' }}</div>
+        <a href="{% url 'download_file' code=paste.code %}" download class="code-box" style="margin-top:0; display:block; text-align:center; font-size:2rem; color:#7CFC00; background:#111; border-radius:12px; padding:0.5rem 0; margin-bottom:1rem; text-decoration:none; font-family:monospace; letter-spacing:0.2em;">Download File</a>
+    </div>
+{% endif %}
+<div class="code-box">Code: {{ paste.code }}</div>
+{% if paste.expires_at %}
+    <div class="code-box" style="color:#ffb347;">Expires at: {{ paste.expires_at|date:'F j, Y, g:i a' }} UTC</div>
+{% endif %}
+<p><a href="{% url 'home' %}">Create another paste</a></p>
+{% endblock %}

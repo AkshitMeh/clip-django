@@ -1,0 +1,9 @@
+uploads/
+db.sqlite3
+*.pyc
+__pycache__/
+.env
+*.log
+*.sqlite3
+*.db
+Blueprint.md
